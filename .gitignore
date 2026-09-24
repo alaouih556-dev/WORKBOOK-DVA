@@ -1,0 +1,21 @@
+﻿# Secrets
+.env
+backend/.env
+*.env
+
+# Python
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# HTML backups - keep only index (6).html
+*_backup*.html
+*_before_*.html
+
+# Local data
+backend/data/
+
+# Misc
+.DS_Store
