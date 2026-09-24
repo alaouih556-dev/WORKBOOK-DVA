@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthode DVA | Caltur</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #343433; }
+        ::-webkit-scrollbar-thumb { background: #3D6120; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #80C247; }
+        .perspective-1000 { perspective: 1000px; }
+        .rotate-y-[-10deg] { transform: rotateY(-10deg); }
+    </style>
+</head>
+<body class="font-sans text-[#343433] antialiased selection:bg-[#80C247] selection:text-white overflow-x-hidden">
+
+    <!-- HEADER -->
+<header class="fixed top-0 w-full bg-[#343433]/95 backdrop-blur-sm z-50 border-b border-white/10">
+
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+        <a href="#" class="flex items-center">
+
+            <img
+                src="./asset/logo.svg"
+                alt="Caltur Logo"
+                class="h-8 w-auto"
+            >
+
+        </a>
+
+    </div>
+
+</header>
+
+    <!-- SECTION 01: HERO (SANS VSL, AVEC MOCKUP WORKBOOK) -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-[#343433] text-[#F7F6F2] min-h-[90vh] flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+            <div class="max-w-2xl">
+                <span class="inline-block text-[#F9EC23] text-xs font-bold tracking-widest uppercase mb-6 border border-[#F9EC23]/30 py-1.5 px-3 rounded-sm">
+                    Le Diagnostic DVA pour Dirigeants
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-white">
+                    Votre entreprise a grandi. Mais qu'est-ce qui la bloque aujourd'hui ?
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed font-light">
+                    Il peut s'agir d'un ou deux leviers précis — dans votre entreprise ou dans votre manière de la diriger — qui freinent aujourd'hui le reste. <strong class="text-white font-medium">Le Workbook DVA vous aide à les identifier et déterminer ce qui mérite votre attention.</strong>
+                </p>
+
+                <div class="border-l-4 border-[#80C247] pl-6 mb-10 text-left space-y-2 bg-[#3D6120]/30 p-4 rounded-r-sm">
+                    <p class="text-2xl font-bold text-white flex items-center">
+                        Workbook DVA <span class="text-[#F9EC23] ml-3">— 199 MAD</span>
+                    </p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        <span class="font-bold text-[#80C247]">Inclus :</span> Accès offert à la Masterclass DVA. Amine intervient personnellement pour vous aider.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-start gap-4">
+                    <a href="#checkout-form" class="js-scroll-to-checkout inline-flex items-center justify-center bg-[#80C247] hover:bg-[#6ba33b] text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 group cursor-pointer shadow-lg">
+                        <span>Je commence mon diagnostic</span>
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- MOCKUP WORKBOOK AU LIEU DE LA VIDÉO -->
+            <div class="relative w-full aspect-[4/5] max-w-sm mx-auto perspective-1000">
+                <div class="absolute inset-0 bg-[#252524] shadow-2xl shadow-black/60 rotate-y-[-10deg] border border-[#80C247]/20 rounded-r-lg overflow-hidden transition-transform duration-700 ease-out flex flex-col">
+                    <div class="w-8 h-full bg-[#1a1a19] absolute left-0 top-0 border-r border-black/40 shadow-inner"></div>
+                    <div class="pl-14 pr-8 py-12 flex-1 flex flex-col justify-between z-10">
+                        <div>
+                            <p class="text-[#80C247] text-[10px] tracking-widest font-bold mb-2">CALTUR</p>
+                            <h2 class="text-white text-3xl font-bold leading-tight mb-2">WORKBOOK<br/>DVA</h2>
+                            <div class="w-12 h-[2px] bg-[#F9EC23] mb-8"></div>
+                            <div class="space-y-4">
+                                <p class="text-white/40 text-lg font-light tracking-widest">DIAGNOSTIC</p>
+                                <p class="text-white/40 text-lg font-light tracking-widest">VISION</p>
+                                <p class="text-white/40 text-lg font-light tracking-widest">ACTION</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Le diagnostic stratégique<br/>du dirigeant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: QUALIFICATION -->
+    <section class="py-24 bg-[#F7F6F2] text-[#343433]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ce Workbook n'est pas pour tout le monde.</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-16">
+                <div class="bg-white p-8 border border-gray-200 rounded-sm shadow-sm">
+                    <h3 class="text-xl font-bold mb-6 text-gray-500">Si vous cherchez...</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-gray-600 font-medium"><svg class="w-5 h-5 mr-3 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>Une méthode miracle</li>
+                        <li class="flex items-start text-gray-600 font-medium"><svg class="w-5 h-5 mr-3 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>Quelqu'un pour gérer à votre place</li>
+                        <li class="flex items-start text-gray-600 font-medium"><svg class="w-5 h-5 mr-3 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>Une formation accélérée théorique</li>
+                    </ul>
+                </div>
+                <div class="bg-[#3D6120] text-white p-8 border border-[#3D6120] rounded-sm shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-[#80C247]/20 rounded-bl-full"></div>
+                    <h3 class="text-xl font-bold mb-6 text-[#F9EC23]">En revanche, si...</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-gray-100 font-medium"><svg class="w-5 h-5 mr-3 text-[#80C247] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vous dirigez déjà une entreprise</li>
+                        <li class="flex items-start text-gray-100 font-medium"><svg class="w-5 h-5 mr-3 text-[#80C247] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vous sentez que quelque chose bloque</li>
+                        <li class="flex items-start text-gray-100 font-medium"><svg class="w-5 h-5 mr-3 text-[#80C247] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Votre rentabilité ou croissance stagne</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FRAMEWORK DVA -->
+    <section class="py-24 bg-white text-[#343433]" id="methode">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4">Diagnostic. Vision. Action.</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-[2px] bg-[#80C247]/30 z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center text-center bg-[#F7F6F2] p-8 rounded-sm border border-gray-200 shadow-sm">
+                    <div class="w-24 h-24 bg-white border-[3px] border-[#80C247] rounded-full flex items-center justify-center mb-6 relative">
+                        <span class="text-5xl font-extrabold text-[#343433] absolute">D</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#343433]">DIAGNOSTIC</h3>
+                    <p class="text-gray-600 text-sm font-medium">Identifier les blocages qui méritent votre attention.</p>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-center text-center bg-[#F7F6F2] p-8 rounded-sm border border-gray-200 shadow-sm">
+                    <div class="w-24 h-24 bg-white border-[3px] border-[#80C247] rounded-full flex items-center justify-center mb-6 relative">
+                        <span class="text-5xl font-extrabold text-[#343433] absolute">V</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#343433]">VISION</h3>
+                    <p class="text-gray-600 text-sm font-medium">Clarifier ce que vous cherchez à construire.</p>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-center text-center bg-[#F7F6F2] p-8 rounded-sm border border-gray-200 shadow-sm">
+                    <div class="w-24 h-24 bg-white border-[3px] border-[#80C247] rounded-full flex items-center justify-center mb-6 relative">
+                        <span class="text-5xl font-extrabold text-[#343433] absolute">A</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#343433]">ACTION</h3>
+                    <p class="text-gray-600 text-sm font-medium">Transformer les constats en priorités concrètes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PRODUCT (8 étapes au lieu de 4) -->
+    <section class="py-24 bg-[#F7F6F2] text-[#343433]" id="workbook">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                
+                <!-- Visuel du livre collé à gauche -->
+                <div class="lg:col-span-4 relative p-8 bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+                    <div class="relative w-full aspect-[3/4]">
+                        <div class="absolute inset-0 bg-[#343433] shadow-2xl shadow-black/30 border border-gray-800 rounded-sm flex flex-col justify-between p-8">
+                            <div class="text-[#80C247] text-xs font-bold tracking-widest uppercase">CALTUR</div>
+                            <div>
+                                <h2 class="text-white text-4xl font-bold mb-4">WORKBOOK<br/>DVA</h2>
+                                <div class="space-y-2 opacity-50">
+                                    <div class="h-1 w-16 bg-[#80C247]"></div>
+                                    <div class="h-1 w-24 bg-gray-500"></div>
+                                    <div class="h-1 w-12 bg-gray-500"></div>
+                                </div>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="inline-block bg-[#F9EC23] text-[#343433] font-bold py-1 px-3 text-sm rounded-sm">199 MAD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Les 8 étapes -->
+                <div class="lg:col-span-8">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Le Workbook DVA</h2>
+                    <p class="text-gray-600 leading-relaxed mb-10 text-lg">
+                        Le Workbook vous guide à travers un parcours structuré pour analyser votre situation actuelle, mettre des mots sur vos difficultés et commencer à identifier les vrais leviers à travailler.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-8">
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">01</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Le problème</h4>
+                                <p class="text-gray-600 text-sm">Qu'est-ce qui vous amène réellement à chercher une solution ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">02</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Le diagnostic</h4>
+                                <p class="text-gray-600 text-sm">Qu'est-ce qui fonctionne ? Qu'est-ce qui ne fonctionne plus ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">03</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Le bilan</h4>
+                                <p class="text-gray-600 text-sm">Quelles réussites ? Quelles difficultés majeures ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">04</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Les leçons</h4>
+                                <p class="text-gray-600 text-sm">Qu'est-ce que votre expérience vous apprend jusqu'ici ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">05</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">La vision</h4>
+                                <p class="text-gray-600 text-sm">Où souhaitez-vous réellement emmener l'entreprise ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">06</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Les scénarios</h4>
+                                <p class="text-gray-600 text-sm">Quelles sont vos options stratégiques actuelles ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">07</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Les priorités</h4>
+                                <p class="text-gray-600 text-sm">Quel est le levier unique qui débloquera le reste ?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-[#80C247] font-bold text-xl mr-4 shrink-0 font-mono mt-1">08</span>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-[#343433]">Le plan d'action</h4>
+                                <p class="text-gray-600 text-sm">Quelles sont les prochaines étapes concrètes à engager ?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: MASTERCLASS -->
+    <section class="py-24 bg-[#3D6120] text-white" id="masterclass">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Et vous n'allez pas faire ce travail seul.</h2>
+                <p class="text-xl text-gray-200 max-w-2xl mx-auto font-medium">
+                    Avec votre Workbook, vous recevez également un accès offert à la Masterclass DVA.
+                </p>
+            </div>
+
+            <div class="bg-[#343433] border border-[#80C247]/50 rounded-sm p-8 md:p-12 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#80C247]/10 rounded-bl-full"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                    <div>
+                        <span class="bg-[#F9EC23] text-[#343433] font-bold tracking-widest text-xs px-3 py-1 uppercase mb-4 inline-block rounded-sm">Inclus — Masterclass en direct</span>
+                        <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white">Masterclass DVA<br/>avec Amine El Ouariti</h3>
+                        <ul class="space-y-3 text-gray-300 font-medium">
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-[#80C247]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Ce n'est pas une vidéo préenregistrée.</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-[#80C247]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Ce n'est pas une conférence théorique.</li>
+                            <li class="flex items-start font-bold text-white mt-4 border-l-4 border-[#80C247] pl-4 bg-white/5 p-3 rounded-r-sm">
+                                Amine sera personnellement présent pour travailler avec les participants sur leurs problématiques.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: COST OF INACTION (Correction du contraste) -->
+    <section class="py-24 bg-white text-[#343433]">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 max-w-3xl mx-auto">
+                Une mauvaise priorité peut vous coûter bien plus que 199 MAD.
+            </h2>
+
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="bg-[#343433] p-6 rounded-sm text-left">
+                    <div class="text-2xl font-bold text-red-500 mb-2">5 000 MAD</div>
+                    <p class="text-gray-300 text-sm mb-2">dans une campagne...</p>
+                    <p class="font-bold text-xs text-white">alors que le problème est votre offre.</p>
+                </div>
+                <div class="bg-[#343433] p-6 rounded-sm text-left">
+                    <div class="text-2xl font-bold text-red-500 mb-2">1 Recrutement</div>
+                    <p class="text-gray-300 text-sm mb-2">alors que le problème est</p>
+                    <p class="font-bold text-xs text-white">votre organisation.</p>
+                </div>
+                <div class="bg-[#343433] p-6 rounded-sm text-left">
+                    <div class="text-2xl font-bold text-red-500 mb-2">6 Mois</div>
+                    <p class="text-gray-300 text-sm mb-2">à chercher de nouveaux clients...</p>
+                    <p class="font-bold text-xs text-white">alors que le problème est votre rentabilité.</p>
+                </div>
+                <div class="bg-[#343433] p-6 rounded-sm text-left">
+                    <div class="text-2xl font-bold text-red-500 mb-2">Une nouvelle offre</div>
+                    <p class="text-gray-300 text-sm mb-2">alors que votre problème</p>
+                    <p class="font-bold text-xs text-white">est ailleurs.</p>
+                </div>
+            </div>
+
+            <!-- CONTRASTE CORRIGÉ ICI -->
+            <div class="bg-[#343433] p-8 max-w-3xl mx-auto rounded-sm border-l-4 border-[#F9EC23]">
+                <p class="text-lg text-gray-300 mb-2 font-medium">Le diagnostic ne garantit pas que votre entreprise changera.</p>
+                <p class="text-xl font-bold text-white">Il vous aide à comprendre ce qui doit changer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FOUNDER (Correction 29+ ans) -->
+    <section class="py-24 bg-[#F7F6F2] text-[#343433]">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
+            <div class="md:col-span-2">
+                <div class="aspect-[3/4] bg-white border border-gray-200 shadow-sm rounded-sm overflow-hidden relative border-l-4 border-[#3D6120] flex flex-col items-center justify-center p-8 text-center">
+                    <h3 class="font-bold text-2xl mb-4 leading-tight">MOHAMMED<br>AMINE<br>EL OUARITI</h3>
+                    <span class="text-xs uppercase tracking-widest border border-gray-300 px-3 py-1 rounded-sm text-gray-500">Portrait à venir</span>
+                </div>
+            </div>
+            <div class="md:col-span-3">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                    29+ ans à observer ce qui fait avancer — ou bloquer — les organisations.
+                </h2>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-[#343433]">Mohammed Amine El Ouariti</h3>
+                    <p class="text-xs font-bold tracking-widest text-[#80C247] uppercase mt-2">
+                        ESSEC · Entrepreneur · Dirigeant · Consultant · Coach
+                    </p>
+                </div>
+
+                <p class="text-gray-600 mb-8 leading-relaxed font-medium">
+                    Après plusieurs décennies d'expérience dans l'entreprise, la direction, la stratégie et l'accompagnement des dirigeants, Amine a développé une conviction simple : avant de chercher une solution, il faut comprendre précisément le problème.
+                </p>
+
+                <blockquote class="border-l-4 border-[#F9EC23] pl-6 py-2">
+                    <p class="text-lg italic text-[#343433] font-bold">
+                        « Mon rôle n'est pas de vous dire ce que vous devez faire avant de comprendre pourquoi vous êtes dans cette situation. »
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CHECKOUT FORM DIRECT (AVEC LA QUESTION DE QUALIFICATION) -->
+    <section id="checkout-form" class="py-24 bg-[#343433] text-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div id="form-header" class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Dernière étape</h2>
+                <p class="text-gray-300 text-lg font-medium">Remplissez vos informations pour accéder au Workbook et à la Masterclass.</p>
+            </div>
+            
+            <!-- Le Formulaire -->
+            <div id="form-container" class="bg-white text-[#343433] p-8 md:p-10 rounded-sm shadow-xl">
+                <form id="lead-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Prénom *</label>
+                            <input id="firstName" required type="text" class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247]" placeholder="Votre prénom" />
+                        </div>
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Nom *</label>
+                            <input id="lastName" required type="text" class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247]" placeholder="Votre nom" />
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Email professionnel *</label>
+                            <input id="email" required type="email" class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247]" placeholder="email@entreprise.com" />
+                        </div>
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Téléphone (WhatsApp) *</label>
+                            <input id="phone" required type="tel" class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247]" placeholder="+212 6 XX XX XX XX" />
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Nom de l'entreprise *</label>
+                            <input id="company" required type="text" class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247]" placeholder="Votre entreprise" />
+                        </div>
+                        <div class="space-y-2 text-left">
+                            <label class="text-sm font-bold text-[#343433]">Principal défi actuel *</label>
+                            <div class="relative">
+                                <select id="challenge" required class="w-full bg-gray-50 border border-gray-200 rounded-sm px-4 py-3 focus:outline-none focus:border-[#80C247] focus:ring-1 focus:ring-[#80C247] appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Sélectionnez votre défi</option>
+                                    <option value="Trop d'opérationnel">Je suis trop dans l'opérationnel</option>
+                                    <option value="Croissance stagnante">Ma croissance a ralenti/stagne</option>
+                                    <option value="Manque d'autonomie">Mon équipe manque d'autonomie</option>
+                                    <option value="Autre">Autre blocage stratégique</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <button id="submit-btn" type="submit" class="w-full flex items-center justify-center bg-[#343433] hover:bg-[#1a1a1a] text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 disabled:opacity-70 text-lg cursor-pointer shadow-lg">
+                            <span id="btn-text">Réserver mon Workbook — 199 MAD</span>
+                        </button>
+                    </div>
+
+                    <div class="pt-3">
+                        <button id="paddle-pay-btn" type="button" class="w-full flex items-center justify-center bg-[#80C247] hover:bg-[#6ba33b] text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 disabled:opacity-70 text-lg cursor-pointer shadow-lg">
+                            <span id="paddle-pay-btn-text">Payer directement — 19 EUR</span>
+                        </button>
+                    </div>
+                    <div id="paddle-message" class="hidden pt-3 text-sm font-bold text-center"></div>
+                </form>
+            </div>
+
+            <!-- État de Succès In-Situ -->
+            <div id="success-state" class="hidden bg-white text-[#343433] p-12 rounded-sm shadow-xl text-center">
+                <div class="w-20 h-20 bg-[#80C247] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Demande enregistrée</h2>
+                <p class="text-gray-600 mb-8 text-lg font-medium">Merci pour votre confiance. Notre équipe va prendre contact avec vous très rapidement pour finaliser votre accès au Workbook et à la Masterclass.</p>
+            </div>
+
+            <!-- État de Succès Paddle (confirmé uniquement côté serveur) -->
+            <div id="paddle-success-state" class="hidden bg-white text-[#343433] p-12 rounded-sm shadow-xl text-center">
+                <div class="w-20 h-20 bg-[#80C247] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Paiement confirmé</h2>
+                <p class="text-gray-600 mb-8 text-lg font-medium">Votre paiement a été reçu et vérifié. Vos accès au Workbook et à la Masterclass vont vous être envoyés très rapidement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#252524] border-t border-white/10 py-12 text-center text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-center mb-4">
+                <!-- Emplacement pour le logo -->
+                <img src="" alt="Caltur Logo" class="h-8">
+            </div>
+            <p class="text-xs mb-8">Diagnostic · Vision · Action</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT JS (Envoi vers Google Sheets + URLSearchParams Anti-balle) -->
+    <script>
+        const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwoAWPyjpdSZpILSIR4EvwlOLQDHlVNBuP31h3pi_XQ_RtNqeXrWyr2J-gcb4TETvL-/exec';
+
+        document.getElementById('lead-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+
+            const data = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                challenge: document.getElementById('challenge').value
+            };
+
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enregistrement en cours...';
+
+            try {
+                // 1. Sauvegarde Google Sheet
+                const formData = new URLSearchParams();
+
+                for (const key in data) {
+                    formData.append(key, data[key]);
+                }
+
+                formData.append('paymentType', 'Virement RIB');
+
+                await fetch(GOOGLE_APP_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                // 2. Message WhatsApp
+                const message =
+                    "Bonjour,\n\n" +
+                    "Je suis intéressé par le workbook DVA et la Masterclass gratuite.\n\n" +
+                    "Pourriez vous me transmettre votre RIB pour vous faire un virement.\n\n" +
+                    "Bien Cordialement,";
+
+                const whatsappUrl =
+                    "https://wa.me/212703151513?text=" +
+                    encodeURIComponent(message);
+
+                // 3. Ouvrir WhatsApp
+                window.location.href = whatsappUrl;
+
+            } catch (error) {
+                console.error('Erreur Google Sheet:', error);
+
+                submitBtn.disabled = false;
+                btnText.textContent = 'R�server mon Workbook � 199 MAD';
+
+                alert("Une erreur est survenue. Veuillez r�essayer.");
+            }
+        });
+
+        // Fonction pour le défilement fluide vers le formulaire
+        document.querySelectorAll('.js-scroll-to-checkout').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector('#checkout-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+    <!-- SCRIPT PADDLE.JS v2 (paiement direct Sandbox, confirmé côté serveur) -->
+    <script>
+        (function () {
+            'use strict';
+
+            var paddleBtn = document.getElementById('paddle-pay-btn');
+            var paddleBtnText = document.getElementById('paddle-pay-btn-text');
+            var paddleMsg = document.getElementById('paddle-message');
+            var successState = document.getElementById('paddle-success-state');
+            var formContainer = document.getElementById('form-container');
+            var formHeader = document.getElementById('form-header');
+
+            var DEFAULT_LABEL = 'Payer directement — 19 EUR';
+            var VERIFY_INTERVAL_MS = 2000;
+            var VERIFY_TIMEOUT_MS = 60000;
+
+            var paddleInitialized = false;
+            var currentOrder = null;
+            var currentPayload = null;
+            var verificationTimer = null;
+            var verificationElapsed = 0;
+
+            function showMessage(text, isError) {
+                paddleMsg.textContent = text;
+                paddleMsg.classList.toggle('text-red-500', !!(isError));
+                paddleMsg.classList.toggle('text-[#3D6120]', !isError);
+                paddleMsg.classList.remove('hidden');
+            }
+
+            function hideMessage() {
+                paddleMsg.classList.add('hidden');
+            }
+
+            function setButtonBusy(label) {
+                paddleBtn.disabled = true;
+                paddleBtnText.textContent = label;
+            }
+
+            function restoreButton() {
+                paddleBtn.disabled = false;
+                paddleBtnText.textContent = DEFAULT_LABEL;
+            }
+
+            function readFormData() {
+                var form = document.getElementById('lead-form');
+                if (!form.reportValidity()) {
+                    return null;
+                }
+                return {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    company: document.getElementById('company').value.trim(),
+                    challenge: document.getElementById('challenge').value.trim()
+                };
+            }
+
+            function handlePaddleEvent(event) {
+                // Seul checkout.completed déclenche la vérification serveur.
+                if (!event || event.name !== 'checkout.completed' || !currentOrder) {
+                    return;
+                }
+                startVerification(currentOrder, currentPayload);
+            }
+
+            function initPaddle(environment, clientToken) {
+                if (paddleInitialized) {
+                    return;
+                }
+                // API Paddle.js v2 : Environnement uniquement en Sandbox.
+                if (environment !== 'production') {
+                    Paddle.Environment.set('sandbox');
+                }
+                // Initialisation unique, eventCallback fourni ici.
+                Paddle.Initialize({
+                    token: clientToken,
+                    eventCallback: handlePaddleEvent
+                });
+                paddleInitialized = true;
+            }
+
+            async function fetchPaddleConfig() {
+                var resp = await fetch('/api/paddle-config', {
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!resp.ok) {
+                    throw new Error('payment_not_configured');
+                }
+                return resp.json();
+            }
+
+            function clearVerification() {
+                if (verificationTimer) {
+                    clearInterval(verificationTimer);
+                    verificationTimer = null;
+                }
+                verificationElapsed = 0;
+            }
+
+            function renderFinalConfirmation() {
+                clearVerification();
+                if (formContainer) {
+                    formContainer.classList.add('hidden');
+                }
+                if (formHeader) {
+                    formHeader.classList.add('hidden');
+                }
+                if (successState) {
+                    successState.classList.remove('hidden');
+                }
+            }
+
+            function showPendingVerification() {
+                clearVerification();
+                restoreButton();
+                showMessage(
+                    'Vérification en attente : votre paiement a bien été reçu. ' +
+                    'Si la confirmation ne s\'affiche pas sous peu, contactez-nous.',
+                    false
+                );
+            }
+
+            function startVerification(order, payload) {
+                if (verificationTimer) {
+                    return;
+                }
+                clearVerification();
+                hideMessage();
+                setButtonBusy('Paiement reçu, vérification en cours...');
+                verificationElapsed = 0;
+
+                verificationTimer = setInterval(async function () {
+                    verificationElapsed += VERIFY_INTERVAL_MS;
+                    try {
+                        var resp = await fetch(
+                            '/api/orders/' + encodeURIComponent(order.order_id) +
+                            '/status?token=' + encodeURIComponent(order.checkout_token),
+                            { headers: { 'Accept': 'application/json' } }
+                        );
+                        if (resp.ok) {
+                            var status = await resp.json();
+                            // Le checkout.completed n'est JAMAIS une confirmation : seul
+                            // le statut serveur paid=true affiche la confirmation finale.
+                            if (status && status.paid === true) {
+
+                                // Sauvegarde dans Google Sheet apr�s confirmation Paddle
+                                try {
+                                    var sheetData = new URLSearchParams();
+                                    sheetData.append('firstName', payload.firstName || '');
+                                    sheetData.append('lastName', payload.lastName || '');
+                                    sheetData.append('email', payload.email || '');
+                                    sheetData.append('phone', payload.phone || '');
+                                    sheetData.append('company', payload.company || '');
+                                    sheetData.append('challenge', payload.challenge || '');
+                                    sheetData.append('paymentType', 'Paiement en ligne');
+
+                                    fetch(GOOGLE_APP_SCRIPT_URL, {
+                                        method: 'POST',
+                                        mode: 'no-cors',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        },
+                                        body: sheetData.toString()
+                                    }).catch(function (error) {
+                                        console.error('Google Sheet error:', error);
+                                    });
+                                } catch (sheetError) {
+                                    console.error('Google Sheet error:', sheetError);
+                                }
+
+                                renderFinalConfirmation();
+                                return;
+                            }
+                        }
+                    } catch (err) {
+                        // Hiccup réseau : on continue de sonder, on ne conclut pas.
+                        console.error('verification poll error', err);
+                    }
+
+                    if (verificationElapsed >= VERIFY_TIMEOUT_MS) {
+                        showPendingVerification();
+                    }
+                }, VERIFY_INTERVAL_MS);
+            }
+
+            paddleBtn.addEventListener('click', async function () {
+                if (paddleBtn.disabled) {
+                    return;
+                }
+
+                var payload = readFormData();
+                if (!payload) {
+                    return;
+                }
+
+                currentPayload = payload;
+
+                hideMessage();
+                setButtonBusy('Création du paiement...');
+
+                try {
+                    var cfg = await fetchPaddleConfig();
+                    if (!window.Paddle) {
+                        throw new Error('paddle_js_missing');
+                    }
+                    initPaddle(cfg.environment, cfg.clientToken);
+
+                    var resp = await fetch('/api/orders', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    var data = null;
+                    var detail = 'creation_failed';
+                    try {
+                        data = await resp.json();
+                        if (data && typeof data.detail === 'string') {
+                            detail = data.detail;
+                        }
+                    } catch (err) {
+                        // pas de corps JSON
+                    }
+
+                    if (!resp.ok || !data || !data.transaction_id) {
+                        console.error('order creation failed', resp.status, detail);
+                        restoreButton();
+                        showMessage(
+                            'La création du paiement a échoué (' + detail + '). Veuillez réessayer.',
+                            true
+                        );
+                        return;
+                    }
+
+                    currentOrder = {
+                        order_id: data.order_id,
+                        checkout_token: data.checkout_token
+                    };
+                    restoreButton();
+
+                    Paddle.Checkout.open({
+                        transactionId: data.transaction_id
+                    });
+                } catch (error) {
+                    console.error('paddle flow error', error);
+                    restoreButton();
+                    showMessage(
+                        'Impossible de démarrer le paiement. Veuillez réessayer.',
+                        true
+                    );
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
+
