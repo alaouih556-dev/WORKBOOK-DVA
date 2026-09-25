@@ -24,8 +24,6 @@ def _prerequisites(settings: Settings) -> list[str]:
         missing.append("PUBLIC_BASE_URL missing")
     if not settings.email_host or not settings.email_from:
         missing.append("SMTP not configured (EMAIL_HOST / EMAIL_FROM)")
-    if not settings.masterclass_url:
-        missing.append("MASTERCLASS_URL missing")
     if not settings.workbook_path or not settings.workbook_path.is_file():
         missing.append("DELIVERY_FILE_WORKBOOK missing or file not found")
     return missing
