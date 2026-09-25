@@ -239,7 +239,9 @@ def create_app() -> FastAPI:
             recent = models.recent_orders(conn, limit=15)
             recent_webhooks = conn.execute(
                 """
-                SELECT event_id, event_type, outcome, occurred_at, processed_at
+                SELECT event_id, event_type, outcome, occurred_at, processed_at,
+                       json_extract(payload, '$.data.currency_code') AS currency_code,
+                       json_extract(payload, '$.data.details.totals.currency_code') AS totals_currency
                 FROM webhook_events
                 ORDER BY processed_at DESC
                 LIMIT 20
@@ -281,6 +283,8 @@ def create_app() -> FastAPI:
                     "outcome": r["outcome"],
                     "occurred_at": r["occurred_at"],
                     "processed_at": r["processed_at"],
+                    "currency_code": r["currency_code"],
+                    "totals_currency": r["totals_currency"],
                 }
                 for r in recent_webhooks
             ],
