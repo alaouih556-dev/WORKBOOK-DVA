@@ -237,6 +237,14 @@ def create_app() -> FastAPI:
         with db.connection() as conn:
             stats = models.order_stats(conn)
             recent = models.recent_orders(conn, limit=15)
+            recent_webhooks = conn.execute(
+                """
+                SELECT event_id, event_type, outcome, occurred_at, processed_at
+                FROM webhook_events
+                ORDER BY processed_at DESC
+                LIMIT 20
+                """
+            ).fetchall()
 
         from .delivery import _prerequisites
 
@@ -266,6 +274,16 @@ def create_app() -> FastAPI:
                 "delivery_missing": missing,
             },
             "stats": stats,
+            "recent_webhooks": [
+                {
+                    "event_id": r["event_id"],
+                    "event_type": r["event_type"],
+                    "outcome": r["outcome"],
+                    "occurred_at": r["occurred_at"],
+                    "processed_at": r["processed_at"],
+                }
+                for r in recent_webhooks
+            ],
             "recent_orders": [
                 {
                     "order_number": r["order_number"],
