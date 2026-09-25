@@ -500,7 +500,7 @@
                     "Bien Cordialement,";
 
                 const whatsappUrl =
-                    "https://wa.me/212703151513?text=" +
+                    "https://wa.me/212707033228?text=" +
                     encodeURIComponent(message);
 
                 // 3. Ouvrir WhatsApp
@@ -510,9 +510,9 @@
                 console.error('Erreur Google Sheet:', error);
 
                 submitBtn.disabled = false;
-                btnText.textContent = 'R�server mon Workbook � 199 MAD';
+                btnText.textContent = 'R server mon Workbook   199 MAD';
 
-                alert("Une erreur est survenue. Veuillez r�essayer.");
+                alert("Une erreur est survenue. Veuillez r essayer.");
             }
         });
 
@@ -671,7 +671,7 @@
                             // le statut serveur paid=true affiche la confirmation finale.
                             if (status && status.paid === true) {
 
-                                // Sauvegarde dans Google Sheet apr�s confirmation Paddle
+                                // Sauvegarde dans Google Sheet apr s confirmation Paddle
                                 try {
                                     var sheetData = new URLSearchParams();
                                     sheetData.append('firstName', payload.firstName || '');
