@@ -221,7 +221,7 @@ def order_stats(conn: sqlite3.Connection) -> dict[str, int]:
 def recent_orders(conn: sqlite3.Connection, limit: int = 10) -> list[dict[str, Any]]:
     rows = conn.execute(
         """
-        SELECT order_number, status, delivery_status, paid_at, created_at, email
+        SELECT order_number, status, delivery_status, delivery_error, delivery_attempts, paid_at, created_at, email
         FROM orders
         ORDER BY created_at DESC
         LIMIT ?

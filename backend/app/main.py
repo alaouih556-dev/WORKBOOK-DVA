@@ -7,6 +7,7 @@ from typing import Any
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 
 from . import delivery, models, paddle, webhook
@@ -50,6 +51,12 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    # ------------------------------------------------------------------
+    # Static frontend assets
+    # ------------------------------------------------------------------
+    asset_dir = Path(__file__).resolve().parent.parent / "asset"
+    if asset_dir.is_dir():
+        app.mount("/asset", StaticFiles(directory=str(asset_dir)), name="asset")
     # ------------------------------------------------------------------
     # Local dev: serve the existing page (read-only, never modified)
     # ------------------------------------------------------------------
@@ -293,6 +300,8 @@ def create_app() -> FastAPI:
                     "order_number": r["order_number"],
                     "status": r["status"],
                     "delivery_status": r["delivery_status"],
+                    "delivery_error": r["delivery_error"],
+                    "delivery_attempts": r["delivery_attempts"],
                     "paid_at": r["paid_at"],
                     "created_at": r["created_at"],
                     "email_masked": mask(r["email"]),
