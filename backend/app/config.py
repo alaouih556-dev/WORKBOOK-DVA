@@ -38,7 +38,10 @@ class Settings(BaseSettings):
     access_link_secret: str = ""
     access_link_ttl_hours: int = 72
 
-    # Email delivery (SMTP)
+    # Email delivery (Resend HTTPS API)
+    resend_api_key: str = ""
+
+    # Legacy SMTP settings
     email_host: str = ""
     email_port: int = 587
     email_username: str = ""

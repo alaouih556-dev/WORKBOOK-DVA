@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import logging
-import smtplib
-import ssl
+import httpx
 from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -22,8 +21,10 @@ def _prerequisites(settings: Settings) -> list[str]:
         missing.append("ACCESS_LINK_SECRET missing")
     if not settings.public_base_url:
         missing.append("PUBLIC_BASE_URL missing")
-    if not settings.email_host or not settings.email_from:
-        missing.append("SMTP not configured (EMAIL_HOST / EMAIL_FROM)")
+    if not settings.resend_api_key:
+        missing.append("RESEND_API_KEY missing")
+    if not settings.email_from:
+        missing.append("EMAIL_FROM missing")
     if not settings.workbook_path or not settings.workbook_path.is_file():
         missing.append("DELIVERY_FILE_WORKBOOK missing or file not found")
     return missing
@@ -110,30 +111,57 @@ def _build_email(
     return msg
 
 
-def _send_smtp(
+def _send_resend(
     settings: Settings,
     to: str,
     msg: MIMEMultipart,
 ) -> tuple[bool, str]:
     try:
-        if settings.email_use_ssl:
-            ctx = ssl.create_default_context()
-            server = smtplib.SMTP_SSL(settings.email_host, settings.email_port, context=ctx, timeout=20)
-        else:
-            server = smtplib.SMTP(settings.email_host, settings.email_port, timeout=20)
-            if settings.email_use_tls:
-                server.starttls()
-        try:
-            if settings.email_username:
-                server.login(settings.email_username, settings.email_password)
-            server.sendmail(settings.email_from, [to], msg.as_string())
-        finally:
-            try:
-                server.quit()
-            except Exception:
-                pass
-        return True, ""
-    except Exception as exc:  # pragma: no cover
+        plaintext = ""
+        html = ""
+
+        for part in msg.walk():
+            if part.get_content_type() not in ("text/plain", "text/html"):
+                continue
+
+            raw = part.get_payload(decode=True)
+            if raw is None:
+                continue
+
+            content = raw.decode(
+                part.get_content_charset() or "utf-8",
+                errors="replace",
+            )
+
+            if part.get_content_type() == "text/plain":
+                plaintext = content
+            else:
+                html = content
+
+        response = httpx.post(
+            "https://api.resend.com/emails",
+            headers={
+                "Authorization": f"Bearer {settings.resend_api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "from": f"{settings.email_from_name} <{settings.email_from}>",
+                "to": [to],
+                "subject": str(msg["Subject"]),
+                "text": plaintext,
+                "html": html,
+            },
+            timeout=20.0,
+        )
+
+        if 200 <= response.status_code < 300:
+            return True, ""
+
+        return False, (
+            f"Resend HTTP {response.status_code}: {response.text}"
+        )[:300]
+
+    except Exception as exc:
         return False, str(exc)[:300]
 
 
@@ -167,7 +195,7 @@ def deliver(
         else:
             links = build_links(settings, order_id, settings.access_link_ttl_hours)
             msg = _build_email(order, links, settings, settings.access_link_ttl_hours)
-            ok, error = _send_smtp(settings, order["email"], msg)
+            ok, error = _send_resend(settings, order["email"], msg)
             if ok:
                 from .models import utcnow_iso
                 set_delivery(
