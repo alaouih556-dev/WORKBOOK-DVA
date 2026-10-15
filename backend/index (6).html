@@ -476,6 +476,11 @@
         document.getElementById('lead-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // WhatsApp uniquement si le bouton virement a ete utilise.
+            if (!e.submitter || e.submitter.id !== 'submit-btn') {
+                return;
+            }
+
             const submitBtn = document.getElementById('submit-btn');
             const btnText = document.getElementById('btn-text');
 

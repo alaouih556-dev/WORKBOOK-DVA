@@ -61,53 +61,91 @@ def _build_email(
     settings: Settings,
     ttl_hours: int,
 ) -> MIMEMultipart:
-    expiry = _link_expiry_text(ttl_hours)
-    first = order["first_name"]
-    last = order["last_name"]
-    full_name = f"{first} {last}"
-    order_number = order["order_number"]
+    from html import escape
 
-    subject = "Votre accès : Workbook DVA + Masterclass Caltur"
+    first = str(order.get("first_name") or "").strip()
+    first = first or "Client"
+
+    workbook_url = str(links.get("workbook") or "").strip()
+    whatsapp_url = str(settings.whatsapp_group_url or "").strip()
+
+    subject = "Votre Workbook DVA est pr\u00eat"
 
     plaintext = (
-        f"Bonjour {full_name},\n\n"
-        f"Votre commande {order_number} est confirmée.\n\n"
-        f"Voici vos accès (valables jusqu'au {expiry}) :\n\n"
-        f"- Workbook DVA : {links['workbook']}\n"
-        f"- Masterclass DVA : {links['masterclass']}\n\n"
-        f"Merci pour votre confiance.\n— Caltur"
+        f"Bonjour {first},\n\n"
+        "Votre paiement est bien confirm\u00e9 et je vous souhaite la bienvenue dans la M\u00e9thode DVA.\n\n"
+        "Voici le lien s\u00e9curis\u00e9 pour t\u00e9l\u00e9charger votre Workbook DVA et entamer votre diagnostic imm\u00e9diatement :\n\n"
+        f"T\u00e9l\u00e9charger mon Workbook DVA : {workbook_url}\n\n"
+        "Comment acc\u00e9der \u00e0 votre Masterclass offerte ?\n\n"
+        "Travailler avec le Workbook DVA n'est que la premi\u00e8re \u00e9tape. "
+        "Nous vous transmettrons d'ici une semaine, par email, la date et l\u2019heure de la session en direct.\n\n"
+        "Bonus : Communaut\u00e9 M\u00e9thode DVA\n\n"
+        "Rejoignez notre groupe priv\u00e9 pour \u00e9changer avec d\u2019autres entrepreneurs engag\u00e9s "
+        "dans la m\u00e9thode et b\u00e9n\u00e9ficier de leurs retours d'exp\u00e9rience :\n\n"
+        f"Rejoindre le groupe WhatsApp VIP : {whatsapp_url}\n\n"
+        "Un dernier conseil :\n\n"
+        "Prenez le temps de r\u00e9aliser ce diagnostic en toute sinc\u00e9rit\u00e9. "
+        "C'est le premier pas concret pour reprendre le contr\u00f4le de votre activit\u00e9 "
+        "et de votre vie d\u2019entrepreneur.\n\n"
+        "\u00c0 tr\u00e8s vite,\n\n"
+        "Mohammed Amine El Ouariti\n"
+        "Directeur G\u00e9n\u00e9ral, Caltur"
     )
 
-    html = f"""\
-<html>
-<body style="font-family:Arial,sans-serif;color:#343433;max-width:600px;margin:0 auto;">
-  <p>Bonjour <strong>{full_name}</strong>,</p>
-  <p>Votre commande <strong>{order_number}</strong> est confirmée.</p>
-  <p>Voici vos accès (valables jusqu'au <strong>{expiry}</strong>) :</p>
-  <ul style="list-style:none;padding:0;">
-    <li style="margin-bottom:12px;">
-      <a href="{links['workbook']}"
-         style="display:inline-block;padding:10px 24px;background:#80C247;color:#fff;text-decoration:none;font-weight:bold;border-radius:4px;">
-        Accéder au Workbook DVA
-      </a>
-    </li>
-    <li>
-      <a href="{links['masterclass']}"
-         style="display:inline-block;padding:10px 24px;background:#3D6120;color:#fff;text-decoration:none;font-weight:bold;border-radius:4px;">
-        Accéder à la Masterclass DVA
-      </a>
-    </li>
-  </ul>
-  <p style="margin-top:32px;color:#666;">Merci pour votre confiance.<br/>— Caltur</p>
-</body>
-</html>"""
+    safe_first = escape(first)
+    safe_workbook = escape(workbook_url, quote=True)
+    safe_whatsapp = escape(whatsapp_url, quote=True)
+
+    html = f"""
+    <html>
+    <body style="font-family:Arial,sans-serif;color:#343433;line-height:1.7;max-width:650px;margin:auto;padding:24px;">
+        <p>Bonjour {safe_first},</p>
+
+        <p>Votre paiement est bien confirm\u00e9 et je vous souhaite la bienvenue dans la <strong>M\u00e9thode DVA</strong>.</p>
+
+        <p>Voici le lien s\u00e9curis\u00e9 pour t\u00e9l\u00e9charger votre Workbook DVA et entamer votre diagnostic imm\u00e9diatement :</p>
+
+        <p style="margin:28px 0;">
+            <a href="{safe_workbook}" style="background:#80C247;color:#ffffff;text-decoration:none;padding:14px 22px;display:inline-block;border-radius:5px;font-weight:bold;">
+                T\u00e9l\u00e9charger mon Workbook DVA
+            </a>
+        </p>
+
+        <h3>Comment acc\u00e9der \u00e0 votre Masterclass offerte ?</h3>
+
+        <p>Travailler avec le Workbook DVA n'est que la premi\u00e8re \u00e9tape.
+        Nous vous transmettrons d'ici une semaine, par email, la date et l\u2019heure de la session en direct.</p>
+
+        <h3>Bonus : Communaut\u00e9 M\u00e9thode DVA</h3>
+
+        <p>Rejoignez notre groupe priv\u00e9 pour \u00e9changer avec d\u2019autres entrepreneurs engag\u00e9s
+        dans la m\u00e9thode et b\u00e9n\u00e9ficier de leurs retours d'exp\u00e9rience :</p>
+
+        <p style="margin:28px 0;">
+            <a href="{safe_whatsapp}" style="background:#25D366;color:#ffffff;text-decoration:none;padding:14px 22px;display:inline-block;border-radius:5px;font-weight:bold;">
+                Rejoindre le groupe WhatsApp VIP
+            </a>
+        </p>
+
+        <p><strong>Un dernier conseil :</strong></p>
+
+        <p>Prenez le temps de r\u00e9aliser ce diagnostic en toute sinc\u00e9rit\u00e9.
+        C'est le premier pas concret pour reprendre le contr\u00f4le de votre activit\u00e9
+        et de votre vie d\u2019entrepreneur.</p>
+
+        <p>\u00c0 tr\u00e8s vite,</p>
+
+        <p><strong>Mohammed Amine El Ouariti</strong><br>
+        Directeur G\u00e9n\u00e9ral, Caltur</p>
+    </body>
+    </html>
+    """
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
-    msg["From"] = f"{settings.email_from_name} <{settings.email_from}>"
-    msg["To"] = order["email"]
     msg.attach(MIMEText(plaintext, "plain", "utf-8"))
     msg.attach(MIMEText(html, "html", "utf-8"))
+
     return msg
 
 

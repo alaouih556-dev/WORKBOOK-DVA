@@ -54,6 +54,7 @@ class Settings(BaseSettings):
     # Digital deliverables
     delivery_file_workbook: str = ""
     masterclass_url: str = ""
+    whatsapp_group_url: str = ""
 
     # Protected admin/status endpoint
     admin_status_token: str = ""

@@ -79,7 +79,7 @@ def settings(tmp_path, monkeypatch):
     monkeypatch.setenv("PADDLE_WEBHOOK_SECRET", "pdl_ntfset_secret_for_testing_only")
     monkeypatch.setenv("ACCESS_LINK_SECRET", "test_signing_secret_abc")
     monkeypatch.setenv("PUBLIC_BASE_URL", "http://localhost")
-    monkeypatch.setenv("EMAIL_HOST", "")  # SMTP not configured → delivery pending
+    monkeypatch.setenv("RESEND_API_KEY", "")  # Resend not configured -> delivery pending
     monkeypatch.setenv("MASTERCLASS_URL", "https://zoom.us/j/123")
     monkeypatch.setenv("DELIVERY_FILE_WORKBOOK", str(wb_file))
     monkeypatch.setenv("ADMIN_STATUS_TOKEN", "admin_secret_token_123")

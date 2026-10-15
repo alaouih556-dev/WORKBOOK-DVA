@@ -85,7 +85,7 @@ class TestWebhookForwarding:
         assert data["paid"] is True
         stored = _get_order(settings, order["order_id"])
         assert stored["status"] == "paid"
-        # No SMTP/file/link configured: delivery stays pending, never "sent".
+        # No Resend/file/link configured: delivery stays pending, never "sent".
         assert stored["delivery_status"] == "pending"
 
 

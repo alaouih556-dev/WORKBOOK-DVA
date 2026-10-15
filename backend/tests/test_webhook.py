@@ -157,7 +157,7 @@ class TestHappyPath:
         assert resp.status_code == 200
         data = resp.json()
         assert data["paid"] is True
-        assert data["delivery"]["status"] == "pending"  # SMTP not configured
+        assert data["delivery"]["status"] == "pending"  # Resend not configured
 
         order_after = _get_order(settings, oid)
         assert order_after["status"] == "paid"

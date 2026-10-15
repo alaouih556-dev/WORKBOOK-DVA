@@ -76,21 +76,21 @@ class TestAccessLinks:
 
 
 class TestDeliveryPrerequisites:
-    def test_pending_delivery_reports_missing_smtp(self, client, settings):
+    def test_pending_delivery_reports_missing_resend(self, client, settings):
         order = _create_order(client)
         paid = _pay_order(client, settings, order["order_id"])
         assert paid["delivery_status"] == "pending"
-        assert "SMTP" in (paid["delivery_error"] or "")
+        assert "RESEND_API_KEY" in (paid["delivery_error"] or "")
 
     def test_retry_when_email_configured_sends(self, client, settings, monkeypatch):
-        from app.delivery import _send_smtp
+        from app.delivery import _send_resend
 
         order = _create_order(client)
         _pay_order(client, settings, order["order_id"])
 
-        monkeypatch.setattr("app.delivery._send_smtp", lambda *a, **k: (True, ""))
+        monkeypatch.setattr("app.delivery._send_resend", lambda *a, **k: (True, ""))
 
-        # Re-run delivery through the admin retry endpoint once SMTP is "configured"
+        # Re-run delivery through the admin retry endpoint once Resend is "configured"
         monkeypatch.setattr(
             "app.delivery._prerequisites",
             lambda s: [],
@@ -118,7 +118,7 @@ class TestDeliveryPrerequisites:
 
         original_path = settings.delivery_file_workbook
         settings.delivery_file_workbook = "C:/nonexistent/workbook.pdf"
-        monkeypatch.setattr("app.delivery._send_smtp", lambda *a, **k: (True, ""))
+        monkeypatch.setattr("app.delivery._send_resend", lambda *a, **k: (True, ""))
         try:
             resp = client.post(
                 f"/api/admin/deliveries/{order['order_id']}/retry",
