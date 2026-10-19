@@ -54,6 +54,11 @@ def create_app() -> FastAPI:
     # ------------------------------------------------------------------
     # Static frontend assets
     # ------------------------------------------------------------------
+    # Serve legal PDF documents
+    legal_dir = Path(__file__).resolve().parent.parent / "legal"
+    if legal_dir.is_dir():
+        app.mount("/legal", StaticFiles(directory=str(legal_dir)), name="legal")
+
     asset_dir = Path(__file__).resolve().parent.parent / "asset"
     if asset_dir.is_dir():
         app.mount("/asset", StaticFiles(directory=str(asset_dir)), name="asset")
