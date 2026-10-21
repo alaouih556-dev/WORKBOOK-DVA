@@ -429,12 +429,12 @@
                         </button>
                     </div>
 
-                    <div class="pt-3">
+                    <div class="pt-3" style="display:none !important;" data-dva-paddle-hidden="true">
                         <button id="paddle-pay-btn" type="button" class="w-full flex items-center justify-center bg-[#80C247] hover:bg-[#6ba33b] text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 disabled:opacity-70 text-lg cursor-pointer shadow-lg">
                             <span id="paddle-pay-btn-text">Payer par carte — 19 EUR</span>
                         </button>
                     </div>
-                    <div id="paddle-message" class="hidden pt-3 text-sm font-bold text-center"></div>
+                    <div id="paddle-message" style="display:none !important;" class="hidden pt-3 text-sm font-bold text-center"></div>
                 </form>
             </div>
 
@@ -448,7 +448,7 @@
             </div>
 
             <!-- État de Succès Paddle (confirmé uniquement côté serveur) -->
-            <div id="paddle-success-state" class="hidden bg-white text-[#343433] p-12 rounded-sm shadow-xl text-center">
+            <div id="paddle-success-state" style="display:none !important;" class="hidden bg-white text-[#343433] p-12 rounded-sm shadow-xl text-center">
                 <div class="w-20 h-20 bg-[#80C247] rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
@@ -741,6 +741,7 @@
             }
 
             paddleBtn.addEventListener('click', async function () {
+                return; // DVA_PADDLE_TEMP_HIDDEN
                 if (paddleBtn.disabled) {
                     return;
                 }
